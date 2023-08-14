@@ -20,13 +20,14 @@ vr = 205
 za = 90
 zo = 345
 
-def inkomsten_totaal():
-    global ma, di, wo, do, vr, za, zo
-    inkomsten = ma + di + wo + do + vr + za + zo
-    btw = 0.09 * inkomsten
-    return f"Het totaal van alle inkomsten van deze week is {inkomsten} euro, waarover {btw} euro btw betaald dient te worden."
+def inkomsten_totaal(inkomsten,btw):
+    totaal = 0
+    for bedrag in inkomsten:
+     totaal += bedrag
+     btw_bedrag = totaal * btw
+     uitvoer = f"Het totaal van alle inkomsten van deze week is {totaal} euro, waarover {btw_bedrag} euro btw betaald dient te worden."
+     return totaal
 
-print(inkomsten_totaal()) 
 
 def laag_en_hoog():
      mijn_lijst = 220, 430, 125, 160, 205, 90, 345
@@ -35,13 +36,16 @@ def laag_en_hoog():
 
 laag_en_hoog()
 
-def gemiddelde():
-     global ma, di, wo, do, vr, za, zo
-     werkdagen = ma + di + wo + do + vr + za + zo 
-     mijn_lijst = werkdagen / 7 
-     return f"De gemiddelde inkomsten deze week zijn {mijn_lijst} euro."
+def gemiddelde(mijn_lijst):
+     mijn_lijst = 220, 430, 125, 160, 205, 90, 345
+     aantal = len(mijn_lijst)
+     totaal = 0
+     for element in mijn_lijst:
+      totaal += element
+      gemiddelde = totaal / aantal
+      uitvoer = f"De gemiddelde inkomsten deze week zijn {gemiddelde} euro."
+      return mijn_lijst
 
-print (gemiddelde())
 
 def meervoudig():
      invoer_lijst = 10, 5, 3, 2, 1, 2, 9 
